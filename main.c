@@ -7,7 +7,8 @@
 
 #include "Peripheral_Setup.h"
 
-uint32_t count = 0;
+uint32_t index = 0;
+uint16_t sine_table[125];
 
 __interrupt void isr_cpu_timer0(void);
 
@@ -35,6 +36,13 @@ int main(void)
     ConfigCpuTimer(&CpuTimer0, 60, 50000);              // Frequency clock: 60 MHz
     StartCpuTimer0();                                   // Enable Timer 0 interruption
 
+    for (index = 0; index < 125; index++)
+    {
+//        sine_table[index] = (uint16_t) (1000.0 * (1.0 + sin(6.28318531 / 125.0 * ((float) index))));
+        sine_table[index] = 0;
+    }
+    index = 0;
+
     EINT;                                               // Enable Global interrupt INTM
     ERTM;                                               // Enable Global real time interrupt DBGM
 
@@ -46,10 +54,7 @@ int main(void)
 
     while (1)
     {
-        for (count = 0; count < 0x0007FFFF; count++)
-        {
-        }
-
+        DELAY_US(100000);
         GpioDataRegs.GPATOGGLE.bit.GPIO3 = 1;
     }
 
