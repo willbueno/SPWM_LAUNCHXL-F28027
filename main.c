@@ -54,7 +54,7 @@ int main(void)
     /*
     for (index = 0; index < 125; index++)
     {
-        sine_table[index] = (uint16_t) (1000.0 * (1.0 + sin(6.28318531 / 125.0 * ((float) index))));
+        sine_table[index] = (uint16_t) (1500.0 * (1.0 + sin(6.28318531 / 125.0 * ((float) index))));
     }
      */
     index = 0;

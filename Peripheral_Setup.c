@@ -51,9 +51,9 @@ void Setup_ePWM(void)
     SysCtrlRegs.PCLKCR0.bit.TBCLKSYNC = 0;
 
     // PWM 3A
-    EPwm3Regs.TBPRD = 600;                              // Set period 25 kHz - uC_clock / (2*2*fs) for UP/DOWN
+    EPwm3Regs.TBPRD = 1500;                             // Set period 20 kHz - uC_clock / (2*fs) for UP/DOWN
 
-    EPwm3Regs.CMPA.half.CMPA = 300;                     // Duty Cicle in 50% of PRD
+    EPwm3Regs.CMPA.half.CMPA = 750;                     // Duty Cicle in 50% of PRD
 
     EPwm3Regs.TBPHS.half.TBPHS = 0;                     // Phase is 0
     EPwm3Regs.TBCTL.bit.SYNCOSEL = TB_CTR_ZERO;
@@ -70,8 +70,8 @@ void Setup_ePWM(void)
 
     EPwm3Regs.AQCTLA.bit.PRD = AQ_NO_ACTION;
     EPwm3Regs.AQCTLA.bit.ZRO = AQ_NO_ACTION;
-    EPwm3Regs.AQCTLA.bit.CAD = AQ_CLEAR;                // Set actions for EPWM3A
-    EPwm3Regs.AQCTLA.bit.CAD = AQ_SET;
+    EPwm3Regs.AQCTLA.bit.CAU = AQ_CLEAR;                // Set actions for EPWM3A
+    EPwm3Regs.AQCTLA.bit.CAD = AQ_SET;                  // Set actions for EPWM3A
 
     EPwm3Regs.DBCTL.bit.POLSEL = DB_ACTV_HIC;           // Active Hi complementary
     EPwm3Regs.DBCTL.bit.OUT_MODE = DB_FULL_ENABLE;      // Enable Dead-band module
@@ -79,9 +79,9 @@ void Setup_ePWM(void)
     EPwm3Regs.DBRED = 80;                               // Dead-Band Generator Rising Edge Delay (RED)
 
     // PWM 4A
-    EPwm4Regs.TBPRD = 600;                              // Set period 25 kHz - uC_clock / (2*2*fs) for UP-DOWN
+    EPwm4Regs.TBPRD = 1500;                             // Set period 20 kHz - uC_clock / (2*fs) for UP-DOWN
 
-    EPwm4Regs.CMPA.half.CMPA = 0;
+    EPwm4Regs.CMPA.half.CMPA = 750;
 
     EPwm4Regs.TBPHS.half.TBPHS = 600;                   // Phase is 180 degree
     EPwm4Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_IN;
@@ -99,8 +99,8 @@ void Setup_ePWM(void)
 
     EPwm4Regs.AQCTLA.bit.PRD = AQ_NO_ACTION;
     EPwm4Regs.AQCTLA.bit.ZRO = AQ_NO_ACTION;
-    EPwm4Regs.AQCTLA.bit.CAD = AQ_CLEAR;                // Set actions for EPWM4A
-    EPwm4Regs.AQCTLA.bit.CAD = AQ_SET;
+    EPwm4Regs.AQCTLA.bit.CAU = AQ_CLEAR;                // Set actions for EPWM4A
+    EPwm4Regs.AQCTLA.bit.CAD = AQ_SET;                  // Set actions for EPWM4A
 
     EPwm4Regs.DBCTL.bit.POLSEL = DB_ACTV_HIC;           // Active Hi complementary
     EPwm4Regs.DBCTL.bit.OUT_MODE = DB_FULL_ENABLE;      // Enable Dead-band module
